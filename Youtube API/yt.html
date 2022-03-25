@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="yt.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#">
+        <img src="img/logo.png" alt="YouTube Logo" class="youtube-logo" />
+      </a>
+      <form class="search-bar">
+        <input
+          id="search"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button onclick="searchVideos()" type="submit" class="search-btn">
+          <img src="img/magnify.svg" />
+        </button>
+      </form>
+      <div class="menu-icons">
+        <a href="#">
+          <img src="img/video-plus.svg" alt="Upload Video" />
+        </a>
+        <a href="#">
+          <img src="img/apps.svg" alt="Apps" />
+        </a>
+        <a href="#">
+          <img src="img/bell.svg" alt="Notifications" />
+        </a>
+        <a href="#">
+          <img
+            class="menu-channel-icon"
+            src="img/mine.jpeg"
+            alt="Your Channel"
+          />
+        </a>
+      </div>
+    </header>
+    <div class="categories">
+      <section class="category-section">
+        <button class="category active">All</button>
+        <button class="category">Comedy</button>
+        <button class="category">Entertainment</button>
+        <button class="category">Big Boss</button>
+        <button class="category">Indian Cricket</button>
+        <button class="category">Technology</button>
+        <button class="category">Javascript</button>
+        <button class="category">Masai</button>
+        <button class="category">News</button>
+      </section>
+    </div>
+    <div class="videos">
+      <img src="yt-img/yt_plans.png" alt="">
+      <section class="video-section"></section>
+      
+    </div>
+    <div class="col">
+      <img src="yt-img/home.png" width="30px" alt="" class="ytt" />
+      <span> Home</span>
+      <br />
+      <p></p>
+      <img src="yt-img/explore.png" width="30px" alt="" class="ytt" />
+      <span>Explore</span>
+      <br />
+      <p></p>
+      <img src="yt-img/subscriprion.png" width="30px" alt="" class="ytt" />
+      <span> Subscription</span>
+      <br />
+      <br />
+      <p></p>
+    </div>
+    <div class="col2">
+      <img src="yt-img/library.png" width="30px" alt="" class="ytt" />
+      <span> Library</span>
+      <br />
+      <p></p>
+      <img src="yt-img/history.png" width="30px" alt="" class="ytt" />
+      <span> History</span>
+      <br />
+      <p></p>
+      <img src="yt-img/cast.png" width="30px" alt="" class="ytt" />
+      <span> Your videos</span>
+      <br />
+      <p></p>
+      <img src="yt-img/playlist.png" width="30px" alt="" class="ytt" />
+      <span> Watch later</span>
+      <br />
+      <p></p>
+      <img src="yt-img/like.png" width="30px" alt="" class="ytt" />
+      <span> Liked videos</span>
+      <br />
+      <p></p>
+      <img src="yt-img/show-more.png" width="30px" alt="" class="ytt" />
+      <span> Show more</span>
+      <br />
+      <p></p>
+    </div>
+    <div id="search_results"></div>
+  </body>
+</html>
+
+<script>
+  //let API = "AIzaSyAZBT8Jd0kWKjVzS-Gwy-ErvUNXg3PVEdQ";
+  let API = "AIzaSyCvuXIU_9EXVd8IYXQnBR3y7g-W1yBnfD4"
+
+  let search_results_div = document.getElementById("search_results");
+
+  async function searchVideos() {
+    try {
+      // This gives us the input data from an API.
+      let input = document.getElementById("search").value;
+
+      let res = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?q=${input}&key=${API}&type=video&maxResults=25&part=snippet`
+      );
+
+      //to print the data into Console.
+      let data = await res.json();
+      console.log("data:", data);
+
+      let array_of_videos = data.items;
+
+      appendVideos(array_of_videos);
+    } catch (err) {
+      console.log("err:", err);
+    }
+  }
+
+  const appendVideos = (arr) => {
+    arr.forEach(({ id: { videoId } }) => {
+      console.log("videoId:", videoId);
+      let div = document.createElement("div");
+
+      //Using Iframe for the video player to play the video.
+      let iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${videoId}`;
+      iframe.width = "300px";
+      iframe.height = "190px";
+      //iframe.allowfullscreen = "true";
+
+      iframe.setAttribute("allowfullscreen", true);
+
+      div.append(iframe);
+
+      search_results_div.append(div);
+    });
+  };
+</script>
