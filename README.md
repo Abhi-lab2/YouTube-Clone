@@ -1,4 +1,4 @@
 # YouTube-Clone
 
 
-![Landing Page](https://cdn-images-1.medium.com/max/800/1*-F4k1jErUi7105-_VQbJZA.png)
+![Landing Page](https://drive.google.com/file/d/1UauxVI7g6ueYyFtwWA6alpE_q2DG5NLV/view?usp=sharing)
