@@ -1,4 +1,4 @@
 # YouTube-Clone
 
 
-![Landing Page](https://drive.google.com/file/d/1UauxVI7g6ueYyFtwWA6alpE_q2DG5NLV/view?usp=sharing)
+<img src="https://drive.google.com/file/d/1sFTd-aEDoevF3SykMh6Q4N5xtZ4bE2r4/view?usp=sharing" alt="drawing" width="400"/>
