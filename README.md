@@ -5,6 +5,8 @@
 _THIS IS THE MOVIE APP USING API AND SHOWS THE ALL THE MOVIES/ SHOWS WITH THE RATINGS AND THE SHORT DESCRIPTION OF THE MOVIE WHICH IS SEARCHED FOR. ._
 This is a Sole Project and was build in a day.
 
+_YouTube is a video sharing service where users can watch, like, share, comment and upload their own videos.Built using HTML,CSS,and Javascript._
+
 ---
 
 ## Tech Stack Used : -
